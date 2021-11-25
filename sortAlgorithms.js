@@ -70,4 +70,4 @@ sampleArray.sort((a, b) => {
     }
 
 })
-console.log(deneme)
+console.log(sampleArray)
