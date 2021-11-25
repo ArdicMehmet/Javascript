@@ -75,6 +75,6 @@ for(i=0;i<sampleArray.length;i++){
     }
 }
 
-deneme.forEach(x=>{
+sampleArray.forEach(x=>{
     console.log(x)
 })
