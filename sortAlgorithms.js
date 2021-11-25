@@ -1,4 +1,4 @@
-let deneme = [{
+let sampleArray = [{
     "id": 1,
     "details": [
         {
@@ -53,7 +53,7 @@ let deneme = [{
 ]
 let toplamA = 0
 let toplamB = 0
-deneme.sort((a, b) => {
+sampleArray.sort((a, b) => {
     toplamA = 0
     toplamB = 0
     a.details.forEach(x => {
