@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul id='products'>
+
+    </ul>
+    <script>
+        fetch("https://northwind.vercel.app/api/orders")
+            .then(response => response.json())
+            .then(data => {
+
+               let target = data.filter(x=> x.shipAddress.country==='Brazil')
+               var toplam=0
+               target.forEach(x => {
+                    x.details.forEach(y => {
+                       toplam=toplam+ y.unitPrice*y.quantity
+                    })
+                    x.toplam=toplam
+               });
+               target.sort((a,b) => b.toplam - a.toplam )
+               target.forEach(item=>{
+                    var liElement = document.createElement('li');
+                    liElement.innerHTML = "Id : "+item.id + " Toplam Değer : "+ item.toplam;
+                    document.getElementById('products').appendChild(liElement);
+               })
+               
+            })
+            console.log("Merhaba")
+    </script>
+</body>
+
+</html>
