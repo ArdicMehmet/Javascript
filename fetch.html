@@ -17,24 +17,31 @@
             .then(response => response.json())
             .then(data => {
 
-               let target = data.filter(x=> x.shipAddress.country==='Brazil')
-               var toplam=0
-               target.forEach(x => {
+                let target = data.filter(x => x.shipAddress.country === 'Brazil')
+                var totalPrice = 0;
+                target.forEach(x => {
+                    var orderPrice = 0
                     x.details.forEach(y => {
-                       toplam = toplam+ y.unitPrice*y.quantity
+                        orderPrice = orderPrice + y.unitPrice * y.quantity
                     })
-                    x.toplam=toplam   
-                    toplam=0         
-               });
-               target.sort((a,b) => b.toplam - a.toplam )
-               target.forEach(item=>{
+                    x.orderPrice = orderPrice
+                    totalPrice = totalPrice + orderPrice
+                });
+
+                target.sort((a, b) => b.orderPrice - a.orderPrice)
+
+                var liElement = document.createElement('li');
+                liElement.innerHTML = "Brezilya'daki Toplam Harcama : " + totalPrice;
+                document.getElementById('products').appendChild(liElement);
+
+                target.forEach(item => {
                     var liElement = document.createElement('li');
-                    liElement.innerHTML = "Id : "+item.id + " Toplam Değer : "+ item.toplam;
+                    liElement.innerHTML = "Id : " + item.id + " Toplam Değer : " + item.orderPrice;
                     document.getElementById('products').appendChild(liElement);
-               })
-               
+                })
+
             })
-            
+
     </script>
 </body>
 
