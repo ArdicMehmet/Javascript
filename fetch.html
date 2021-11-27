@@ -21,9 +21,9 @@
                var toplam=0
                target.forEach(x => {
                     x.details.forEach(y => {
-                       toplam=toplam+ y.unitPrice*y.quantity
+                       toplam = toplam+ y.unitPrice*y.quantity
                     })
-                    x.toplam=toplam
+                    x.toplam=toplam            
                });
                target.sort((a,b) => b.toplam - a.toplam )
                target.forEach(item=>{
